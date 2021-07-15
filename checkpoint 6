@@ -1,0 +1,148 @@
+#question1
+import numpy as np
+def saisie():
+    column=int(input("insert the number of your array column: "))
+    row=int(input("insert the number of rows : "))
+    while column<=0 or row<=0 :
+        column=int(input("insert the number of your array column: "))
+        row=int(input("insert the number of rows : "))
+    list_array=[]
+    for i in range (row):
+        list_column=[]
+        for x in range (column):
+            element=input("insert an item :")
+            list_column.append(element)
+        list_array.append(list_column)
+    array_out=np.array(list_array)
+    return array_out
+a=saisie()
+print("your array is: ",a)
+list_arr=a.tolist()
+print("the list of your array: ",list_arr)
+
+#question2
+import numpy as np
+def saisie():
+    column=int(input("insert the number of your array column: "))
+    row=int(input("insert the number of rows : "))
+    while column<=0 or row<=0 :
+        column=int(input("insert the number of your array column: "))
+        row=int(input("insert the number of rows : "))
+    list_array=[]
+    for i in range (row):
+        list_column=[]
+        for x in range (column):
+            element=int(input("insert an item :"))
+            list_column.append(element)
+        list_array.append(list_column)
+    array_out=np.array(list_array)
+    return array_out
+a=saisie()
+print("your array is: ",a)
+t=a.trace()
+print("the diagonal total is: ",t)
+
+#question3
+import numpy as np
+def saisie():
+    column=int(input("insert the number of your array column: "))
+    row=int(input("insert the number of rows : "))
+    while column<=0 or row<=0 :
+        column=int(input("insert the number of your array column: "))
+        row=int(input("insert the number of rows : "))
+    list_array=[]
+    for i in range (row):
+        list_column=[]
+        for x in range (column):
+            element=float(input("insert an item :"))
+            list_column.append(element)
+        list_array.append(list_column)
+    array_out=np.array(list_array)
+    return array_out
+def higher(array_higher,limit):
+    shape_array=array_higher.shape
+    elements_higher=""
+    for i in range(shape_array[0]):
+        for x in range(shape_array[1]):
+            if array_higher[i,x]>limit :
+                if elements_higher=="":
+                    elements_higher=str(array_higher[i,x])
+                else:
+                    elements_higher=elements_higher+","+str(array_higher[i,x])
+    return elements_higher
+a=saisie()
+print("your array is: ",a)
+X=float(input("insert a value to compare : "))
+b=higher(a,X)
+print("the elements higher than",X,"in your array are : ",b)
+
+#question4
+import numpy as np
+def saisie():
+    column=int(input("insert the number of your array column: "))
+    row=int(input("insert the number of rows : "))
+    while column<=0 or row<=0 :
+        column=int(input("insert the number of your array column: "))
+        row=int(input("insert the number of rows : "))
+    list1_array=[]
+    for i in range (row):
+        list1_column=[]
+        for x in range (column):
+            element1=float(input("insert an item in your 1st array :"))
+            list1_column.append(element1)
+        list1_array.append(list1_column)
+    array1_out=np.array(list1_array)
+    list2_array=[]
+    for i in range (row):
+        list2_column=[]
+        for x in range (column):
+            element2=float(input("insert an item in your 2nd array :"))
+            list2_column.append(element2)
+        list2_array.append(list2_column)
+    array2_out=np.array(list2_array)
+    return array1_out,array2_out
+def sum_array(array1,array2):
+    shape_array=array1.shape
+    array_sum=np.zeros(shape=(shape_array[0],shape_array[1]))
+    for i in range(shape_array[0]):
+        for x in range(shape_array[1]):
+            array_sum[i,x]=array1[i,x]+array2[i,x]
+    return array_sum
+A,B=saisie()
+print("your 1st array is",A)
+print("your 2nd array is",B)
+t=sum_array(A,B)
+print("your sum array is",t)
+
+#question5
+import numpy as np
+def saisie():
+    column=int(input("insert the number of your array column: "))
+    row=int(input("insert the number of rows : "))
+    while column<=0 or row<=0 :
+        column=int(input("insert the number of your array column: "))
+        row=int(input("insert the number of rows : "))
+    list_array=[]
+    for i in range (row):
+        list_column=[]
+        for x in range (column):
+            element=float(input("insert an item :"))
+            list_column.append(element)
+        list_array.append(list_column)
+    array_out=np.array(list_array)
+    return array_out
+def mean_substract(array_mean):
+    shape_array=array_mean.shape
+    mean_values=np.mean(array_mean,axis=1)
+    list_mean=mean_values.tolist()
+    arraysub_out=np.zeros(shape=shape_array)
+    for i in range(shape_array[0]):
+        l=list_mean[i]
+        for x in range(shape_array[1]):
+            arraysub_out[i,x]=array_mean[i,x]-l
+    return arraysub_out
+a=saisie()
+print("your array is: ",a)
+t=mean_substract(a)
+print ("this is your new array :",t)
+
